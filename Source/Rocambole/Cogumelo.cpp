@@ -52,6 +52,8 @@ void ACogumelo::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 		//Acrescentar no colect
 		Robson->SetColect(Robson->GetColect() + Amount);
 
+
+
 		//LOG
 		//Parâmetros: categoria, tipo, conteúdo (%d -> indica que ali haverá um int, que deve ser indicado no próximo parâmetro)
 		UE_LOG(LogTemp, Warning, TEXT("Colect = %d"), Robson->GetColect());

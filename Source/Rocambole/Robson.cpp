@@ -139,6 +139,8 @@ int ARobson::GetColect() {
 
 }
 
+
+
 void ARobson::GameOver() {
 
 	if (Life <= 0) {
