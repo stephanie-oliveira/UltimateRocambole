@@ -40,6 +40,10 @@ ASpawn::ASpawn()
 	ProjectileMovement->InitialSpeed = 3000.0f;
 	ProjectileMovement->MaxSpeed = 2500.0f;
 
+	bReplicates = true;
+
+
+
 }
 
 // Called when the game starts or when spawned

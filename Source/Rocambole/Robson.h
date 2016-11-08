@@ -38,11 +38,31 @@ public:
 	//Voltar pro início
 	void GameOver();
 
+	FORCEINLINE TArray<class AItem*> GetInventory() const { return Inventory; }
+
+	FORCEINLINE int GetPontuacao() const { return Pontuacao; }
+	FORCEINLINE void ARobson::SetPontuacao(int NewPontuacao) { Pontuacao = NewPontuacao; }
+
+	FORCEINLINE bool GetChave() const { return Chave; }
+	FORCEINLINE void ARobson::SetChave(bool NewChave) { Chave = NewChave; }
+
+	FORCEINLINE bool GetObjeto() const { return Objeto; }
+	FORCEINLINE void ARobson::SetObjeto(bool NewObjeto) { Objeto = NewObjeto; }
+
+	FORCEINLINE bool GetFinal() const { return Final; }
+	FORCEINLINE void ARobson::SetFinal(bool NewFinal) { Final = NewFinal; }
+
+	virtual void Jump() override;
+
 
 private:
 
 	int cont = 0;
 
+	//coletar potion
+	USphereComponent* CollectCollisionComp;
+	//lista para coletagem de poção
+	TArray<class AItem*> Inventory;
 	
 
 	//Forma do personagem
@@ -67,6 +87,10 @@ private:
 	void StartRun();
 	void StopRun();
 
+	void OnCollect();
+
+	void Pause();
+
 	//Vida
 	UPROPERTY(EditAnywhere)
 	int Life = 3;
@@ -78,6 +102,14 @@ private:
 	int Colect = 0;
 
 
+	//SOM
+
+	USoundCue* FireSound;
+	UAudioComponent* AudioComp;
+
+	TSubclassOf<class UUserWidget> UserWidget;
+
+
 	void DropSphere();
 
 	void Turn(float Value);
@@ -85,7 +117,26 @@ private:
 	//UFUNCTION()
 		//void OnHit(UPrimitiveComponent* HitComponen, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult & Hit);
 
+	UPROPERTY(EditAnywhere)
+
+		UAnimSequence* JumpAnim;
+
+	//PARA DEFINIR QUE O MÉTODO SERÁ EXECUTADO A APRTIR DO SERVER
+
+	UFUNCTION(Reliable, Server, WithValidation)
+
+		void DropSphereServer();
+		void DropSphereServer_Implementation();
+		bool DropSphereServer_Validate();
 	
+		UPROPERTY(EditAnywhere)
+		int Pontuacao;
+
+	void ShowPontuacao();
+
+	bool Chave;
+	bool Objeto;
+	bool Final;
 
 	
 };

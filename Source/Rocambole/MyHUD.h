@@ -20,7 +20,13 @@ public:
 		UFont* HUDFont;
 
 	UPROPERTY(EditAnywhere)
-		UTexture2D* MyTexture;
+		UTexture2D* Chave;
+
+	UPROPERTY(EditAnywhere)
+		UTexture2D* Objeto;
+
+	UPROPERTY(EditAnywhere)
+		UTexture2D* Potion;
 
 		virtual void DrawHUD() override;
 

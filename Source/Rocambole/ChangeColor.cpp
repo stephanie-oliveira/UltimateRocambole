@@ -66,7 +66,9 @@ void AChangeColor::Tick( float DeltaTime )
 void AChangeColor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
 	
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr)) {
+
 		ARobson* Robson = Cast<ARobson>(OtherActor);
+
 		UE_LOG(LogTemp, Warning, TEXT("OverlapBegin"));
 		if (MeshComp->GetMaterial(0)->GetName() == "Amarelo") {
 			UMaterial* NewMaterial = Cast<UMaterial>(StaticLoadObject(UMaterial::StaticClass(), NULL, TEXT("Material'/Game/Materials/Azul.Azul'")));

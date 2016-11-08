@@ -20,8 +20,7 @@ void UMyBTService_CheckForPlayer::TickNode(UBehaviorTreeComponent& OwnerComp, ui
 		if (Player != nullptr) {
 			OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Object>(PC->EnemyKeyID, Player);
 
-			GEngine->AddOnScreenDebugMessage(
-				-1, 2.0f, FColor::Cyan, "BROTA NA ESQUINA");
+			
 		}
 	}
 }
